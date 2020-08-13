@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -57,13 +57,15 @@
       <button id="signInBtn" class="btn btn-primary">
         Sign in with Google
       </button>
+      <h3 id="signoutmsg"></h3>
     </section>
 
     <section id="SignedInState" hidden="true">
-      <div class="user-details"></div>
+      <h3 id="username"></h3>
+      <h3 id="userid"></h3>
       <button id="signOutBtn" class="btn btn-primary">Sign Out</button>
     </section>
 
-    <script src="../app.js" defer></script>
+    <script src="app.js"></script>
   </body>
 </html>
