@@ -1,7 +1,7 @@
 # GarudaHacks
 This is our project for GarudaHacks
 
-Duration: August 24th-August 26th
+Duration: August 14th-August 16th
 
 Contributors: Sohil Athare, Andrew Yang, May, and Agni Bhattacharyya.
 
