@@ -64,6 +64,7 @@ auth.onAuthStateChanged((user) => {
 // Firebase firestore
 const db = firebase.firestore();
 const addJobBtn = document.getElementById('addJobBtn');
+const rmJobBtn = document.getElementById('rmJobBtn');
 const jobList = document.getElementById('saved-jobs');
 const jobInput = document.getElementById('newJobtxt');
 
@@ -86,6 +87,28 @@ auth.onAuthStateChanged((user) => {
             createdAt: serverTimestamp(),
             isMatch: boolVal[Math.floor(Math.random() * boolVal.length)],
           });
+        } else {
+          alert('Job input is empty.');
+        }
+      };
+    } catch (err) {
+      alert('Error Occurred: ' + err.message);
+    }
+
+    try {
+      rmJobBtn.onclick = () => {
+        if (jobInput.value.length > 0) {
+          db.collection('saved-jobs')
+            .doc(jobInput.value)
+            .delete()
+            .then(function () {
+              console.log(
+                `${jobInput.value} successfully deleted from the database`
+              );
+            })
+            .catch(function (error) {
+              console.error('Error removing document: ', error);
+            });
         } else {
           alert('Job input is empty.');
         }
