@@ -76,15 +76,19 @@ auth.onAuthStateChanged((user) => {
 
     try {
       addJobBtn.onclick = () => {
-        const { serverTimestamp } = firebase.firestore.FieldValue;
-        boolVal = [true, false];
+        if (jobInput.value.length > 0) {
+          const { serverTimestamp } = firebase.firestore.FieldValue;
+          boolVal = [true, false];
 
-        jobsRef.add({
-          uid: user.uid,
-          title: jobInput.value,
-          createdAt: serverTimestamp(),
-          isMatch: boolVal[Math.floor(Math.random() * boolVal.length)],
-        });
+          jobsRef.add({
+            uid: user.uid,
+            title: jobInput.value,
+            createdAt: serverTimestamp(),
+            isMatch: boolVal[Math.floor(Math.random() * boolVal.length)],
+          });
+        } else {
+          alert('Job input is empty.');
+        }
       };
     } catch (err) {
       alert('Error Occurred: ' + err.message);
@@ -98,5 +102,7 @@ auth.onAuthStateChanged((user) => {
         });
         jobList.innerHTML = jobTitleItems.join('');
       });
+  } else {
+    unsubscribe && unsubscribe();
   }
 });
