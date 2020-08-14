@@ -33,7 +33,14 @@ signInBtn.onclick = () => {
     });
 };
 
-signOutBtn.onclick = () => auth.signOut();
+signOutBtn.onclick = () => {
+  var confirmSignOut = confirm('Would you like to sign out?');
+  if (confirmSignOut) {
+    auth.signOut();
+  } else {
+    alert('You will stay logged in.');
+  }
+};
 
 auth.onAuthStateChanged((user) => {
   if (user) {
